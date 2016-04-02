@@ -4,5 +4,5 @@ module.exports = function(app){
 
   app.get('/v1/fotos', api.lista);
 
-  app.get('/vi/fotos/:id', api.buscaPorId);
+  app.get('/v1/fotos/:id', api.buscaPorId);
 };
