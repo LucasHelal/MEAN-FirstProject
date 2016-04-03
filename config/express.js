@@ -7,7 +7,8 @@ app.use(express.static('./public')) //configura o middleware para acessar os end
 app.use(bodyParser.json());
 
 consign({ cwd: 'app'})
-  .include('api')
+  .include('models')
+  .then('api')
   .then('routes')
   .into(app);
 //require('../app/routes/foto')(app);
