@@ -4,8 +4,8 @@ angular.module('alurapic')
 
     interceptor.response = function(response) {
       console.log('Recebi resposta.');
-      var token = response.headers('x-acess-token');
-      if(token) {
+      var token = response.headers('x-access-token');
+      if(token != null) {
         $window.sessionStorage.token = token;
         console.log('Token armazenado no navegador.');
       }
@@ -15,7 +15,7 @@ angular.module('alurapic')
     interceptor.request = function(config) {
       config.headers = config.headers || {};
       if($window.sessionStorage.token) {
-        config.headers['x-acess-token'] = $window.sessionStorage.token;
+        config.headers['x-access-token'] = $window.sessionStorage.token;
         console.log('Adicionando token no header da requisição para o servidor');
       }
       return config;
@@ -27,6 +27,6 @@ angular.module('alurapic')
         $location.path('/login');
       }
       return $q.reject(rejection);
-    };
+    }
     return interceptor;
   });
